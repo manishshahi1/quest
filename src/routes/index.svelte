@@ -1,0 +1,195 @@
+<script>
+	import Sidebar from '$lib/components/Sidebar.svelte';
+	import Button from '$lib/advertisement/Button.svelte';
+	import Skyscrapper from '$lib/advertisement/Skyscrapper.svelte';
+	import Leaderboard from '$lib/advertisement/Leaderboard.svelte';
+	import { browser } from '$app/env';
+	var w = 1024;
+	if (browser) {
+		w = screen.width;
+	}
+	$: width = w;
+</script>
+
+<div
+	class="{width < 992 ? 'container' : 'container-fluid'} check-pattern text-center"
+	style="height:50% !important"
+>
+	<div class="row">
+		<div class="col-12">
+			<h1 class="mt-5 heading">Upcoming NFT & NFT Drop</h1>
+			<h2 class="p fs-5">
+				Upcoming NFT, NFT Drop, New NFT, NFT Calendar, Best NFT, NFT Blog, NFT News, Bored NFT,
+				Rarity Tools all in one spot.
+			</h2>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12 mb-3">
+			<Leaderboard />
+		</div>
+		<Button />
+		<div class="col-12 text-center my-2">
+			<p class=" mb-2">
+				<a
+					class="btn btn-outline-dark bg-gradient me-3 border border-1 border-dark"
+					href="//twitter.com/intent/follow?screen_name=scribbbblr"
+					><i class="bi bi-twitter" /> Twitter</a
+				>
+				<span />
+				<a
+					class="btn btn-outline-dark bg-gradient me-3 border border-1 border-dark"
+					href="//twitter.com/intent/follow?screen_name=scribbbblr"
+					><i class="bi bi-youtube" /> Youtube</a
+				>
+				<span />
+				<a
+					class="btn btn-outline-dark bg-gradient border border-1 border-dark"
+					href="//twitter.com/intent/follow?screen_name=scribbbblr"
+					><i class="bi bi-telegram" /> Telegram</a
+				>
+			</p>
+		</div>
+		<div class="col-xl-2 col-xxl-2  d-none d-xl-block">
+			<Skyscrapper /><Skyscrapper /><Skyscrapper />
+		</div>
+		<div class="col-12 col-xl-7 col-xxl-7  mb-3">
+			<ul class="nav nav-pills nav-fill flex-nowrap">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="/"
+						><i class="bi bi-calendar-event" /> today</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/calendar/upcoming-nft"
+						><i class="bi bi-calendar3" /> upcoming</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/calendar/ongoing-nft"
+						><i class="bi bi-calendar-check" /> ongoing</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/calendar/new-nft"><i class="bi bi-calendar-plus" /> new</a>
+				</li>
+			</ul>
+			<h2 class="my-3 p">Today's NFT Launches</h2>
+			<hr class="border border-1 mb-4" />
+			<!-- blog post -->
+			<div class="row">
+				<div class="col-12 col-xl-4 col-xxl-4">
+					<div class="card border border-1 border-dark">
+						<img
+							src="https://nftcalendar.io/storage/uploads/events/2022/3/tCYRuPfLxc91LxpuEc7xJ1YmuKPVWH0fAa9NpXGD.gif"
+							class="card-img-top"
+							alt="..."
+						/>
+						<div class="card-body">
+							<h5 class="card-title mono fw-bold">Card title</h5>
+							<p class="text-muted small">Added on: 14 Mar 2022</p>
+							<p class="card-text">
+								Some quick example text to build on the card title and make up the bulk of the
+								card's content.
+							</p>
+							<p class="text-muted small">Launch: 07 Mar - 27 Mar</p>
+
+							<p class="text-success small">
+								<i class="bi bi-check-circle-fill" /> Verified Listing
+							</p>
+							<div
+								class="btn-group  btn-group-lg d-flex"
+								role="group"
+								aria-label="Basic outlined example"
+							>
+								<button type="button" class="btn btn-outline-primary"
+									><i class="bi bi-globe" /></button
+								>
+								<button type="button" class="btn btn-outline-primary"
+									><i class="bi bi-twitter" /></button
+								>
+								<button type="button" class="btn btn-outline-primary"
+									><i class="bi bi-discord" /></button
+								>
+							</div>
+						</div>
+						<div class="card-footer border-top-0">
+							<a
+								href="/calendar/upcoming-nft/"
+								class="btn btn-outline-dark d-grid bg-gradient btn-block btn-lg mb-2 mono small mt-2 fs-6"
+							>
+								Read More</a
+							>
+							<div class="dropup">
+								<button
+									class="btn btn-dark btn-lg btn-block w-100 dropdown-toggle mb-2 mono fs-6"
+									type="button"
+									id="dropdownMenuButton2"
+									data-bs-toggle="dropdown"
+									aria-expanded="false"
+								>
+									Add to Calendar <i class="bi bi-chevron-up" />
+								</button>
+								<ul
+									class="dropdown-menu mb-1 w-100 bg-gradient dropdown-menu-dark"
+									aria-labelledby="dropdownMenuButton2"
+								>
+									<li>
+										<a class="dropdown-item" href="!#"
+											><i class="bi bi-google" /> <span class="ms-2"> Google Calendar</span></a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item" href="!#"
+											><i class="bi bi-apple" /> <span class="ms-2"> Apple Calendar</span></a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item" href="!#">
+											<img src="/yahoo.png" width="17px" alt="Yahoo Calendar" />
+											<span class="ms-2"> Yahoo Calendar</span></a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item" href="!#">
+											<img src="/outlook.png" width="17px" alt="Yahoo Calendar" />
+											<span class="ms-2"> Outlook Calendar</span></a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item" href="!#">
+											<i class="bi bi-calendar" />
+											<span class="ms-2"> iCal Calendar</span></a
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- dont delete below -->
+			</div>
+
+			<!-- end -->
+		</div>
+		<!-- 1st row -->
+		<div class="col-12 col-xl-3 col-xxl-3">
+			<Sidebar />
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-12 mt-4">
+			<Leaderboard />
+		</div>
+	</div>
+</div>
+
+<style>
+	.dropdown-toggle::after {
+		display: none !important;
+	}
+</style>

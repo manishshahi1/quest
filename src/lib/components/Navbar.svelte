@@ -5,21 +5,22 @@
 		['/about', '<i class="bi bi-info-circle-fill"></i> about'],
 		['/contact', '<i class="bi bi-envelope-fill"></i> contact'],
 		['/nft-news', '<i class="bi bi-newspaper"></i> news'],
-		['/nft-blog', '<i class="bi bi-journal-bookmark-fill"></i> blog']
+		['/nft-blog', '<i class="bi bi-journal-bookmark-fill"></i> blog'],
+		['/q', '<i class="bi bi-patch-question-fill"></i> QnA']
 	];
 	//current
 	$: currentRoute = $page.url.pathname;
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient py-1">
-	<div class="container-xxl">
+	<div class="container-fluid">
 		<a class="navbar-brand text-white heading fs-6 fw-bold" href="/"
 			>UpcomingNFT&bullet;Quest<sup>β</sup></a
 		>
 		<button
 			data-bs-toggle="offcanvas"
 			href="#SearchModal"
-			class="float-end btn btn-transparent text-light fs-5 d-block d-xl-none"
+			class="float-end btn btn-transparent text-light d-block d-xl-none"
 			aria-controls="SearchModal"
 		>
 			<i class="bi bi-search float-end" />
@@ -27,13 +28,13 @@
 		<button
 			data-bs-toggle="modal"
 			href="#donateModal"
-			class="float-end btn btn-transparent text-light fs-5 d-block d-xl-none"
+			class="float-end btn btn-transparent text-light d-block d-xl-none"
 			aria-controls="SearchModal"
 		>
 			<i class="bi bi-heart float-end" />
 		</button>
 		<button
-			class="navbar-toggler border-0"
+			class="navbar-toggler border-0 no-active"
 			type="button"
 			data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
@@ -102,3 +103,11 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.no-active:focus,
+	.no-active {
+		outline: none !important;
+		box-shadow: none !important;
+	}
+</style>

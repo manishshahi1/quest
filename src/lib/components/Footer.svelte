@@ -1,4 +1,5 @@
 <script>
+	import Marquee from 'svelte-fast-marquee';
 	let links = [
 		['/about', 'about'],
 		['/contact', 'contact'],
@@ -11,10 +12,18 @@
 		['<i class="bi bi-youtube"></i>', '//twitter.com/upcomingnftquest', 'Youtube'],
 		['<i class="bi bi-telegram"></i>', '//t.me/upcomingnftquest', 'Telegram']
 	];
+	//Marquee
+	let play = true;
+	import { browser } from '$app/env';
+	var w = 1024;
+	if (browser) {
+		w = screen.width;
+	}
+	$: width = w;
 </script>
 
 <div
-	class="container-fluid bg-gradient bg-primary text-center text-light my-3 p-3"
+	class="container-fluid bg-gradient bg-primary text-center text-light my-2 p-3"
 	style="height:50% !important"
 >
 	<div class="row">
@@ -40,20 +49,22 @@
 	</div>
 </div>
 
-<div class="container my-3 text-center">
+<div class="container my-2 text-center">
 	<div class="row">
 		<div class="col-12">
-			<div class="card border-1 border-primary border mb-3">
+			<div class="card border-1 border-primary border mb-2">
 				<div class="card-header heading float-start border-bottom-0 fw-bold">
 					<i class="bi bi-exclamation-triangle" /> <span class="text-primary">Disclaimer</span>
 				</div>
 				<div class="card-body">
 					<p class=" card-text">
-						A listing charge is paid to UpcomingNFT.Quest for listing and ranking NFT collections.
-						NFT holders or creators typically pay listing fees. UpcomingNFT.Quest is exclusively for
-						educational and informational purposes. We do not offer financial or investing advice,
-						nor do we advocate that you buy any NFT. Please do not rely on the postings or other
-						material on this site for purchasing, selling, or any other purpose.
+						<b
+							>A listing charge is paid to UpcomingNFT.Quest for listing and ranking NFT
+							collections. NFT holders or creators typically pay listing fees. UpcomingNFT.Quest is
+							exclusively for educational and informational purposes. We do not offer financial or
+							investing advice, nor do we advocate that you buy any NFT. Please do not rely on the
+							postings or other material on this site for purchasing, selling, or any other purpose.</b
+						>
 					</p>
 				</div>
 			</div>
@@ -74,11 +85,33 @@
 					</li>
 				{/each}
 			</ul>
-			<p class="text-center mono">&copy; 2022 UpcomingNFT&bullet;Quest. All rights reserved.</p>
+			<p class="text-center mono {width < 992 ? 'mb-5' : 'mb-4'}">
+				&copy; 2022 UpcomingNFT&bullet;Quest. All rights reserved.
+			</p>
+		</div>
+	</div>
+</div>
+<!-- marquee -->
+<div class="container-fluid mono  fixed-bottom text-light">
+	<div class="row ">
+		<div
+			class="{width < 992 ? 'col-12' : 'col-2'} text-center mono fs-6 bg-danger bg-gradient  py-1"
+		>
+			🔥 Hot NFT listings
+		</div>
+		<div class=" py-1 {width < 992 ? 'col-12' : 'col-10'}  bg-dark">
+			<div class="list-inline w-100 p text-decoration-none">
+				<Marquee pauseOnHover={true} speed={70} {play}>
+					<a href="/" class="list-inline-item mx-4 link-light">Sold</a>
+					<span>🔥🔥🔥</span>
+					<a href="/" class="list-inline-item mx-4">Sold</a>
+				</Marquee>
+			</div>
 		</div>
 	</div>
 </div>
 
+<!-- marquee end -->
 <style>
 	.sns:hover {
 		color: #fff;

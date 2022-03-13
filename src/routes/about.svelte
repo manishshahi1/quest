@@ -1,5 +1,5 @@
 <script>
-	import About from '$lib/_docs/About.md';
+	import About from '$lib/docs/About.md';
 	import { browser } from '$app/env';
 	var w = 1024;
 	if (browser) {

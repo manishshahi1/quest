@@ -1,5 +1,5 @@
 <script>
-	import About from '$lib/_docs/Privacy.md';
+	import About from '$lib/docs/Privacy.md';
 	import { browser } from '$app/env';
 	var w = 1024;
 	if (browser) {

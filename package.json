@@ -13,10 +13,16 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
+		"mdsvex": "^0.10.5",
 		"prettier": "^2.5.1",
 		"prettier-plugin-svelte": "^2.5.0",
-		"svelte": "^3.44.0",
-		"mdsvex": "^0.10.5"
+		"svelte": "^3.44.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"fs": "^0.0.1-security",
+		"path": "^0.12.7",
+		"svelte-fast-marquee": "^0.4.1",
+		"svelte-loadable": "^1.1.0"
+	}
 }

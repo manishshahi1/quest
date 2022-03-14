@@ -20,7 +20,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"fs": "^0.0.1-security",
 		"path": "^0.12.7",
 		"svelte-fast-marquee": "^0.4.1",
 		"svelte-loadable": "^1.1.0"

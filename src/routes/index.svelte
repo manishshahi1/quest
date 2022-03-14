@@ -1,10 +1,10 @@
 <script context="module">
-	const allPosts = import.meta.glob('./posts/*.md');
+	const allPosts = import.meta.glob('./calendar/event/*.md');
 	let body = [];
 	for (let path in allPosts) {
 		body.push(
 			allPosts[path]().then(({ metadata }) => {
-				return { metadata };
+				return { path, metadata };
 			})
 		);
 	}
@@ -31,7 +31,7 @@
 	$: width = w;
 	//load latest post
 	export let posts;
-
+	console.table(posts);
 	//today's date
 	const twoDigits = (numb) => {
 		return numb.toString().padStart(2, '0');
@@ -113,23 +113,18 @@
 			<hr class="border border-1 mb-4" />
 			<!-- blog post -->
 			<div class="row">
-				{#each posts as { metadata: { title, publishDate, summary, aniImage, launchDate, launchRange, website, discord, twitter, verified, slug } }}
+				{#each posts as { path, metadata: { title, publishDate, summary, aniImage, launchDate, launchRange, launchEndDate, website, discord, twitter, verified, slug } }}
 					{#if today === launchDate}
 						<div class="col-12 col-xl-4 col-xxl-4">
 							<div class="card border border-1 border-dark">
-								<img
-									src="https://nftcalendar.io/storage/uploads/events/2022/3/tCYRuPfLxc91LxpuEc7xJ1YmuKPVWH0fAa9NpXGD.gif"
-									class="card-img-top"
-									alt="..."
-								/>
+								<img src={aniImage} class="card-img-top" alt="..." />
 								<div class="card-body">
 									<h5 class="card-title h4 mono fw-bold">{title}</h5>
 									<p class="text-muted small">
-										Added on: {new Date().toLocaleDateString()}
+										Added on: {publishDate}
 									</p>
 									<p class="card-text">
 										{summary}
-										{launchDate}
 									</p>
 									<p class="text-muted small">Launch: {launchRange}</p>
 
@@ -160,7 +155,7 @@
 								</div>
 								<div class="card-footer border-top-0">
 									<a
-										href="/calendar/event/{slug}"
+										href={path.replace('.md', '')}
 										class="btn btn-outline-dark d-grid bg-gradient btn-block btn-lg mb-2 mono small mt-2 fs-6"
 									>
 										Read More</a

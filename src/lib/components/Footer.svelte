@@ -1,23 +1,3 @@
-<script context="module">
-	const allPosts = import.meta.glob('src/routes/calendar/event/*.md');
-	let body = [];
-	for (let path in allPosts) {
-		body.push(
-			allPosts[path]().then(({ metadata }) => {
-				return { path, metadata };
-			})
-		);
-	}
-	export const load = async () => {
-		const posts = await Promise.all(body);
-		return {
-			props: {
-				posts
-			}
-		};
-	};
-</script>
-
 <script>
 	import Marquee from 'svelte-fast-marquee';
 	let links = [
@@ -124,22 +104,24 @@
 		<div class=" py-1 {width < 992 ? 'col-12' : 'col-10'}  bg-dark">
 			<div class="list-inline w-100 p text-decoration-none">
 				<Marquee pauseOnHover={true} speed={70} {play}>
-					{#each posts as { path, metadata: { title, isHot, verified } }}
-						{#if isHot === 'ok'}
-							<a href={path.replace('.md', '')}>
-								{title}
-								{#if verified === 'not'}
-									<span class="text-danger small"
-										><i class="bi bi-x-circle-fill" /> Unverified Listing</span
-									>
-								{:else}
-									<span class="text-success "
-										><i class="bi bi-check-circle-fill small" /> Verified Listing</span
-									>
-								{/if}
-							</a>
-						{/if}
-					{/each}
+					{#if posts}
+						{#each posts as { path, metadata: { title, isHot, verified } }}
+							{#if isHot === 'ok'}
+								<a href={path.replace('.md', '')}>
+									{title}
+									{#if verified === 'not'}
+										<span class="text-danger small"
+											><i class="bi bi-x-circle-fill" /> Unverified Listing</span
+										>
+									{:else}
+										<span class="text-success "
+											><i class="bi bi-check-circle-fill small" /> Verified Listing</span
+										>
+									{/if}
+								</a>
+							{/if}
+						{/each}
+					{/if}
 				</Marquee>
 			</div>
 		</div>

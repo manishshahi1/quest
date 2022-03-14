@@ -1,10 +1,12 @@
-{	
+{
 	"compilerOptions": {
 		"paths": {
 			"$posts/*": ["./src/routes/*"],
 			"$blog/*": ["./src/routes/*"],
-			"$news/*": ["./src/routes/*"]			
-		},
+			"$news/*": ["./src/routes/*"],
+			"$lib": ["src/lib"],
+			"$lib/*": ["src/lib/*"]
+		}
 	},
 	"extends": "./.svelte-kit/tsconfig.json"
 }

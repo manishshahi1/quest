@@ -1,21 +1,21 @@
 <script context="module">
-	const allPosts = import.meta.glob('./calendar/event/*.md');
-	let body = [];
-	for (let path in allPosts) {
-		body.push(
-			allPosts[path]().then(({ metadata }) => {
-				return { path, metadata };
-			})
-		);
-	}
-	export const load = async () => {
-		const posts = await Promise.all(body);
+	export async function load() {
+		const allPosts = import.meta.glob('/src/routes/calendar/event/*.md');
+		let body = [];
+		for (let path in allPosts) {
+			body.push(
+				allPosts[path]().then(({ metadata }) => {
+					return { path, metadata };
+				})
+			);
+		}
+		let posts = await Promise.all(body);
 		return {
 			props: {
 				posts
 			}
 		};
-	};
+	}
 </script>
 
 <script>

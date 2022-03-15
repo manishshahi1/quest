@@ -4,8 +4,9 @@
 		['/', '<i class="bi bi-house-fill"></i> home'],
 		['/about', '<i class="bi bi-info-circle-fill"></i> about'],
 		['/contact', '<i class="bi bi-envelope-fill"></i> contact'],
-		['/news', '<i class="bi bi-newspaper"></i> news'],
-		['/blog', '<i class="bi bi-journal-bookmark-fill"></i> blog'],
+		['/nft-news', '<i class="bi bi-newspaper"></i> news'],
+		['/nft-blog', '<i class="bi bi-journal-bookmark-fill"></i> blog'],
+		['/promote-your-nft', '<i class="bi bi-megaphone"></i> promote'],
 		['/question-and-answer', '<i class="bi bi-patch-question-fill"></i> QnA']
 	];
 	//current
@@ -48,14 +49,16 @@
 			<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 				{#each links as [href, link]}
 					<li class="nav-item">
-						<a class="nav-link me-3 {currentRoute === href ? 'active' : ''}" {href}>{@html link}</a>
+						<a class="nav-link me-3 small {currentRoute === href ? 'active' : ''}" {href}
+							>{@html link}</a
+						>
 					</li>
 				{/each}
 				<li class="nav-item">
 					<a
 						data-bs-toggle="modal"
 						data-bs-target="#donateModal"
-						class="nav-link me-3 {currentRoute === '!#' ? 'active' : ''}"
+						class="nav-link me-3 small {currentRoute === '!#' ? 'active' : ''}"
 						href="!#"><i class="bi bi-heart-fill" /> donate</a
 					>
 				</li>

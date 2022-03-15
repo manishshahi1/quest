@@ -1,22 +1,3 @@
-<!-- <script context="module">
-	const allPosts = import.meta.glob('./src/routes/calendar/event/*.md');
-	let body = [];
-	for (let path in allPosts) {
-		body.push(
-			allPosts[path]().then(({ metadata }) => {
-				return { path, metadata };
-			})
-		);
-	}
-	export const load = async () => {
-		const posts = await Promise.all(body);
-		return {
-			props: {
-				posts
-			}
-		};
-	};
-</script> -->
 <script>
 	import Marquee from 'svelte-fast-marquee';
 	let links = [
@@ -40,10 +21,9 @@
 	}
 	$: width = w;
 	//export post
-	// export let posts;
+	export let posts;
 </script>
 
-<!-- {JSON.stringify(posts)} -->
 <div
 	class="container-fluid bg-gradient bg-primary text-center text-light my-2 p-3"
 	style="height:50% !important"
@@ -123,24 +103,27 @@
 		</div>
 		<div class=" py-1 {width < 992 ? 'col-12' : 'col-10'}  bg-dark">
 			<div class="list-inline w-100 p text-decoration-none">
-				<!-- <Marquee pauseOnHover={true} speed={70} {play}>
-					{#each posts as { path, metadata: { title, isHot, verified } }}
-						{#if isHot === 'ok'}
-							<a href={path.replace('.md', '')}>
-								{title}
-								{#if verified === 'not'}
-									<span class="text-danger small"
-										><i class="bi bi-x-circle-fill" /> Unverified Listing</span
-									>
-								{:else}
-									<span class="text-success "
-										><i class="bi bi-check-circle-fill small" /> Verified Listing</span
-									>
-								{/if}
-							</a>
-						{/if}
-					{/each}
-				</Marquee> -->
+				<Marquee pauseOnHover={true} speed={40} {play}>
+					{#if posts}
+						{#each posts as { path, metadata: { title, isHot, verified } }}
+							{#if isHot === 'ok'}
+								<a href={path.replace('.md', '')} class="link-light text-decoration-none">
+									{title}
+									{#if verified === 'not'}
+										<span class="text-danger small"
+											><i class="bi bi-x-circle-fill" /> Unverified Listing</span
+										>
+									{:else}
+										<span class="badge bg-success"
+											><i class="bi bi-check-circle-fill small" /> Verified Listing</span
+										>
+										<span class="mx-3">🔥🔥🔥</span>
+									{/if}
+								</a>
+							{/if}
+						{/each}
+					{/if}
+				</Marquee>
 			</div>
 		</div>
 	</div>

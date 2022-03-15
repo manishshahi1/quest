@@ -22,6 +22,7 @@
 	"dependencies": {
 		"path": "^0.12.7",
 		"svelte-fast-marquee": "^0.4.1",
-		"svelte-loadable": "^1.1.0"
+		"svelte-loadable": "^1.1.0",
+		"svelte-seo": "^1.4.0"
 	}
 }

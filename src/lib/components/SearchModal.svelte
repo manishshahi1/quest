@@ -13,13 +13,13 @@
 	id="SearchModal"
 	aria-labelledby="SearchModalLabel"
 >
-	<div class="offcanvas-header bg-primary bg-gradient text-light">
-		<h5 class="offcanvas-title mono" id="SearchModalLabel">
+	<div class="offcanvas-header py-2 bg-primary bg-gradient text-light">
+		<h5 class="offcanvas-title mono fs-6 fw-bold" id="SearchModalLabel">
 			<i class="bi bi-search" /> Search Website
 		</h5>
 		<button
 			type="button"
-			class="btn-close"
+			class="btn-close text-light"
 			style="color:#fff !important;"
 			data-bs-dismiss="offcanvas"
 			aria-label="Close"

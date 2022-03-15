@@ -1,24 +1,25 @@
 <script context="module">
-	const allPosts = import.meta.glob('./calendar/event/*.md');
-	let body = [];
-	for (let path in allPosts) {
-		body.push(
-			allPosts[path]().then(({ metadata }) => {
-				return { path, metadata };
-			})
-		);
-	}
-	export const load = async () => {
-		const posts = await Promise.all(body);
+	export async function load() {
+		const allPosts = import.meta.glob('/src/routes/nft-calendar/event/*.md');
+		let body = [];
+		for (let path in allPosts) {
+			body.push(
+				allPosts[path]().then(({ metadata }) => {
+					return { path, metadata };
+				})
+			);
+		}
+		let posts = await Promise.all(body);
 		return {
 			props: {
 				posts
 			}
 		};
-	};
+	}
 </script>
 
 <script>
+	import SvelteSeo from 'svelte-seo';
 	import Sidebar from '$lib/components/Sidebar.svelte';
 	import Button from '$lib/advertisement/Button.svelte';
 	import Skyscrapper from '$lib/advertisement/Skyscrapper.svelte';
@@ -43,14 +44,15 @@
 	let today = formatDate(new Date());
 </script>
 
+<SvelteSeo title="Home" description="A short description goes here." />
 <div
 	class="{width < 992 ? 'container' : 'container-fluid'} check-pattern text-center"
 	style="height:50% !important"
 >
 	<div class="row">
 		<div class="col-12">
-			<h1 class="mt-5 heading">Upcoming NFT & NFT Drop</h1>
-			<h2 class="p fs-6">
+			<h1 class="mt-5 heading">Upcoming NFT, NFT Drop, NFT Calendar</h1>
+			<h2 class="p">
 				Upcoming NFT, NFT Drop, New NFT, NFT Calendar, Best NFT, Buy NFT, NFT Blog, NFT News, Bored
 				NFT, Art NFT, Opensea, Rarity Tools updates all in one spot.
 			</h2>
@@ -66,19 +68,19 @@
 		<div class="col-12 text-center my-2">
 			<p class=" mb-2">
 				<a
-					class="btn btn-outline-dark bg-gradient me-3 border border-1 border-dark"
+					class="btn btn-dark bg-gradient me-3 border border-1 border-dark"
 					href="//twitter.com/intent/follow?screen_name=scribbbblr"
 					><i class="bi bi-twitter" /> Twitter</a
 				>
 				<span />
 				<a
-					class="btn btn-outline-dark bg-gradient me-3 border border-1 border-dark"
+					class="btn btn-dark bg-gradient me-3 border border-1 border-dark"
 					href="//twitter.com/intent/follow?screen_name=scribbbblr"
 					><i class="bi bi-youtube" /> Youtube</a
 				>
 				<span />
 				<a
-					class="btn btn-outline-dark bg-gradient border border-1 border-dark"
+					class="btn btn-dark bg-gradient border border-1 border-dark"
 					href="//twitter.com/intent/follow?screen_name=scribbbblr"
 					><i class="bi bi-telegram" /> Telegram</a
 				>
@@ -112,15 +114,15 @@
 			<hr class="border border-1 mb-4" />
 			<!-- blog post -->
 			<div class="row">
-				{#each posts as { path, metadata: { title, publishDate, summary, aniImage, launchDate, launchRange, launchEndDate, website, discord, twitter, verified, slug } }}
-					{#if today === launchDate}
+				{#each posts as { path, metadata: { title, publishDate2, summary, aniImage, launchDate, launchRange, launchEndDate, website, discord, twitter, verified } }}
+					{#if today === launchDate && today < launchEndDate}
 						<div class="col-12 col-xl-4 col-xxl-4">
 							<div class="card border border-1 border-dark">
-								<img src={aniImage} class="card-img-top" alt="..." />
+								<img src={aniImage} class="card-img-top" alt={title} />
 								<div class="card-body">
 									<h5 class="card-title h4 mono fw-bold">{title}</h5>
 									<p class="text-muted small">
-										Added on: {publishDate}
+										Added on: {publishDate2}
 									</p>
 									<p class="card-text">
 										{summary}
@@ -154,7 +156,7 @@
 								</div>
 								<div class="card-footer border-top-0">
 									<a
-										href={path.replace('.md', '')}
+										href={path.replace('/src/routes', '').replace('.md', '')}
 										class="btn btn-outline-dark d-grid bg-gradient btn-block btn-lg mb-2 mono small mt-2 fs-6"
 									>
 										Read More</a

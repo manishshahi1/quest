@@ -13,6 +13,8 @@
 		['<i class="bi bi-telegram"></i>', '//t.me/upcomingnftquest', 'Telegram']
 	];
 	//Marquee
+	import posts from '$lib/js/posts.json';
+	console.log(posts);
 	let play = true;
 	import { browser } from '$app/env';
 	var w = 1024;
@@ -21,7 +23,6 @@
 	}
 	$: width = w;
 	//export post
-	export let posts;
 </script>
 
 <div

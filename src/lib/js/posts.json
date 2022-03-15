@@ -1,0 +1,10 @@
+[
+	{
+		"path": "https://google.com",
+		"metadata": {
+			"title": "title",
+			"isHot": "ok",
+			"verified": "ok"
+		}
+	}
+]

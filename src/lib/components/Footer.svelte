@@ -1,5 +1,5 @@
-<script context="module">
-	const allPosts = import.meta.glob('src/routes/calendar/event/*.md');
+<!-- <script context="module">
+	const allPosts = import.meta.glob('./src/routes/calendar/event/*.md');
 	let body = [];
 	for (let path in allPosts) {
 		body.push(
@@ -16,8 +16,7 @@
 			}
 		};
 	};
-</script>
-
+</script> -->
 <script>
 	import Marquee from 'svelte-fast-marquee';
 	let links = [
@@ -41,9 +40,10 @@
 	}
 	$: width = w;
 	//export post
-	export let posts;
+	// export let posts;
 </script>
 
+<!-- {JSON.stringify(posts)} -->
 <div
 	class="container-fluid bg-gradient bg-primary text-center text-light my-2 p-3"
 	style="height:50% !important"
@@ -123,7 +123,7 @@
 		</div>
 		<div class=" py-1 {width < 992 ? 'col-12' : 'col-10'}  bg-dark">
 			<div class="list-inline w-100 p text-decoration-none">
-				<Marquee pauseOnHover={true} speed={70} {play}>
+				<!-- <Marquee pauseOnHover={true} speed={70} {play}>
 					{#each posts as { path, metadata: { title, isHot, verified } }}
 						{#if isHot === 'ok'}
 							<a href={path.replace('.md', '')}>
@@ -140,7 +140,7 @@
 							</a>
 						{/if}
 					{/each}
-				</Marquee>
+				</Marquee> -->
 			</div>
 		</div>
 	</div>

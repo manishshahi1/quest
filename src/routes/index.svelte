@@ -31,7 +31,6 @@
 	$: width = w;
 	//load latest post
 	export let posts;
-	console.table(posts);
 	//today's date
 	const twoDigits = (numb) => {
 		return numb.toString().padStart(2, '0');

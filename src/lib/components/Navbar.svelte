@@ -4,9 +4,9 @@
 		['/', '<i class="bi bi-house-fill"></i> home'],
 		['/about', '<i class="bi bi-info-circle-fill"></i> about'],
 		['/contact', '<i class="bi bi-envelope-fill"></i> contact'],
-		['/nft-news', '<i class="bi bi-newspaper"></i> news'],
-		['/nft-blog', '<i class="bi bi-journal-bookmark-fill"></i> blog'],
-		['/q', '<i class="bi bi-patch-question-fill"></i> QnA']
+		['/news', '<i class="bi bi-newspaper"></i> news'],
+		['/blog', '<i class="bi bi-journal-bookmark-fill"></i> blog'],
+		['/question-and-answer', '<i class="bi bi-patch-question-fill"></i> QnA']
 	];
 	//current
 	$: currentRoute = $page.url.pathname;
